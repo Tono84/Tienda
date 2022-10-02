@@ -1,0 +1,93 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Oct 1, 2022, 8:44:09 PM
+    Author     : joses
+*/
+
+/*hoja de estilos de la clase 2 web y patrones */
+
+/*id... #xxxx */
+
+#encabezado {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 8%;
+    width: 100%;
+    background-color: blue;
+    color: white;
+}
+
+#encabezadoTabla {
+    background-color: blue;
+    color: white;
+}
+
+#encabezado h1{
+    display: inline;
+}
+
+#tablaResumen tr:nth-child(odd){
+    background-color: coral;
+    color: blue;
+}
+
+#tablaResumen tr:nth-child(even){
+    background-color: white;
+    color: blue;
+}
+
+
+#menu {
+    position: absolute;
+    top: 8%;
+    left: 0;
+    height: 4%;
+    width: 100%;
+    background-color: black;
+    color: white;
+}
+
+#menu a {
+    background-color: red;
+    color: black;
+}
+
+#menu a:hover {
+    background-color: green;
+    color: white;
+}
+
+#barraLateral {
+    position: absolute;
+    top: 12%;
+    left: 0;
+    height: 81%;
+    width: 20%;
+    background-color: #00FFA0;
+    padding: 10px;
+}
+
+#contenido {
+    position: absolute;
+    top: 12%;
+    left: 20%;
+    height: 81%;
+    width: 80%;
+    background-color: #7901A0;
+    padding: 10px;
+    overflow: auto;
+}
+
+#piePagina {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4%;
+    width: 100%;
+    background-color: #AABB00;
+    text-align: center;
+}
