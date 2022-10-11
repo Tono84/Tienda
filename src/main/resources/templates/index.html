@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymelead.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <h1>Un Cliente</h1>
+        <p>Nombre: <span th:text="${cliente.nombre}"></span></p>
+        <p>Apellidos: <span th:text="${cliente.apellidos}"></span></p>
+        <p>Correo: <span th:text="${cliente.correo}"></span></p>
+        <p>Telefono: <span th:text="${cliente.telefono}"></span></p>
+        <br>
+        <br>
+        <br>
+        <div th:if='${clientes != null and !clientes.empty}'>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>Correo</th>
+                    <th>Teléfono</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each='item : ${clientes}'>
+                    <td th:text='${item.nombre}'></td>
+                    <td th:text='${item.apellidos}'></td>
+                    <td th:text='${item.correo}'></td>
+                    <td th:text='${item.telefono}'></td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        <div th:if="${clientes == null or clientes.empty}">
+            La lista de clientes esta vacia
+        </div>
+    </body>
+</html>
