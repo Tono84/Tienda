@@ -5,17 +5,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 -->
 <html xmlns:th="http://www.thymelead.org">
     <head>
-        <title>TODO supply a title</title>
+        <title>TechShop</title>
         <meta charset="UTF-8">
     </head>
     <body>
-        <h1>Un Cliente</h1>
-        <p>Nombre: <span th:text="${cliente.nombre}"></span></p>
-        <p>Apellidos: <span th:text="${cliente.apellidos}"></span></p>
-        <p>Correo: <span th:text="${cliente.correo}"></span></p>
-        <p>Telefono: <span th:text="${cliente.telefono}"></span></p>
+        <header th:replace="layout/plantilla :: header"/>
+        <h2>Listado de Clientes</h2>
         <br>
-        <br>
+        <a th:href="@{/nuevoCliente}">Nuevo Cliente</a>
         <br>
         <div th:if='${clientes != null and !clientes.empty}'>
         <table border="1">
@@ -25,6 +22,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <th>Apellidos</th>
                     <th>Correo</th>
                     <th>Teléfono</th>
+                    <th>Modificar</th>
+                    <th>Eliminar</th>
                 </tr>
             </thead>
             <tbody>
@@ -33,6 +32,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <td th:text='${item.apellidos}'></td>
                     <td th:text='${item.correo}'></td>
                     <td th:text='${item.telefono}'></td>
+                    <td><a th:href='@{/modificarCliente/} + ${item.idCliente}'>Modificar</a></td>
+                    <td><a th:href='@{/eliminarCliente/} + ${item.idCliente}'>Eliminar</a></td>
                 </tr>
             </tbody>
         </table>
@@ -40,5 +41,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <div th:if="${clientes == null or clientes.empty}">
             La lista de clientes esta vacia
         </div>
+        <footer th:replace="layout/plantilla :: footer"/>
     </body>
 </html>

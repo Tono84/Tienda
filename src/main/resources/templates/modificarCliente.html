@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org">    
+    <head>        
+        <title>TechShop</title>        
+        <meta charset="UTF-8">        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    </head>    
+    <body>  
+        <header th:replace="layout/plantilla :: header"/>
+        <h2>Datos del cliente</h2>        
+        <br>        
+        <a th:href="@{/}">Regresar</a>        
+        <br>        
+        <br>        
+        <form th:action="@{/guardarCliente}" method="post" th:object="${cliente}">
+            <input type="hidden" name="idCliente" th:field="*{idCliente}"/>
+            <label for="nombre">Nombre: </label>
+            <input type="text" name="nombre" th:field="*{nombre}" />            
+            <br>            
+            <label for="apellidos">Apellidos: </label>            
+            <input type="text" name="apellidos" th:field="*{apellidos}" />            
+            <br>            
+            <label for="correo">Correo: </label>            
+            <input type="email" name="correo" th:field="*{correo}" />            
+            <br>            
+            <label for="tel">Teléfono: </label>            
+            <input type="tel" name="tel" th:field="*{telefono}" />            
+            <br>            
+            <input type="submit" name="Guardar" value="Guadar" />        
+        </form>   
+        <footer th:replace="layout/plantilla :: footer"/>
+    </body>
+</html>
