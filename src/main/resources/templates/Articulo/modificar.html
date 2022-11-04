@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org"> 
+    <head>
+        <title>Techshop</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>  
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header" />   
+        <div class="contenido">
+            <h2>Datos del Articulo</h2>
+            <a th:href="@{/articulo/listado}">Regresar</a>
+            <br/>
+            <br/>
+            <form th:action="@{/articulo/guardar}" method="post" th:object="${articulo}">
+                <input type="hidden" name="idArticulo" th:field="*{idArticulo}"/>
+                <label for="categoria">Categoria:</label>
+                <select th:field="*{idCategoria}">
+                    <option th:each="categoria : ${categorias}"
+                            th:value="${categoria.idCategoria}"
+                            th:text="${categoria.descripcion}"/>
+                </select>
+                <br>
+                <label for="descripcion">Descripción: </label>
+                <input type="text" name="descripcion" th:field="*{descripcion}" />            
+                <br>            
+                <label for="detalle">Detalle: </label>            
+                <input type="text" name="detalle" th:field="*{detalle}" />            
+                <br>            
+                <label for="precio">Precio: </label>            
+                <input type="text" name="precio" th:field="*{precio}" />            
+                <br>            
+                <label for="existencias">Existencias: </label>            
+                <input type="text" name="existencias" th:field="*{existencias}" />            
+                <br>            
+                <label for="activo">Activo: </label>            
+                <input type="checkbox" name="activo" th:checked="*{activo}" />            
+                <br>            
+                <input type="submit" name="Guardar" value="Guadar" />       
+            </form>   
+        </div>   
+        <footer th:replace="layout/plantilla :: footer" /> 
+    </body>
+</html>

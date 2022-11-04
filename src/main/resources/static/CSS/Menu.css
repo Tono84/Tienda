@@ -67,3 +67,22 @@ body{
     border-radius: 4px;
 }
 
+.footer {
+    background-color: black;
+    text-align: center;
+    color: white;
+    height: 20px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%
+}
+.contenido {
+    background-color: wheat;
+    position: fixed;
+    top: 80px;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+    overflow: auto;
+}

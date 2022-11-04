@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+    <html>
+        <head>
+            <title>Clientes</title>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link href="/css/menu.css" rel="stylesheet" type="text/css"/>  
+        </head>
+        <body>
+            <header th:replace="layout/plantilla :: header" />   
+            <div class="contenido">
+                <h2>Listado de Clientes</h2>
+                <a th:href="@{/cliente/nuevo}">Nuevo Cliente</a>
+                <div th:if="${clientes !=null and !clientes.empty}">
+                    <table border="1">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Appellidos</th>
+                                <th>Correo</th>
+                                <th>Teléfono</th>
+                                <th>Limite</th>
+                                <th>Modificar</th>
+                                <th>Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each='item : ${clientes}'>
+                                <td th:text='${item.nombre}'></td>
+                                <td th:text='${item.apellidos}'></td>
+                                <td th:text='${item.correo}'></td>
+                                <td th:text='${item.telefono}'></td>
+                                <td th:text='${#numbers.formatDecimal(item.credito.limite, 3, 2)}'></td>
+                                <td><a th:href="@{/cliente/modificar/} + ${item.idCliente}">Modificar</a></td>    
+                                <td><a th:href="@{/cliente/eliminar/} + ${item.idCliente}">Eliminar</a></td>    
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div th:if="${articulos == null or articulos.empty}">                
+                La lista de articulos está vacía
+            </div>   
+            <footer th:replace="layout/plantilla :: footer" /> 
+        </body>
+    </html>

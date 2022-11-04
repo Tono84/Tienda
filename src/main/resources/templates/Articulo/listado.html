@@ -8,25 +8,32 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <title>TechShop</title>        
         <meta charset="UTF-8">        
         <link href="/css/menu.css" rel="stylesheet" type="text/css"/>    
-    </head>    
+    </head> 
     <body>        
         <header th:replace="layout/plantilla :: header" />        
         <div class="contenido">            
-            <h2>Nuestros Articulos</h2>            
-            <a th:href="@{/articulo/nuevo}">Nuevo Articulo</a>            
+            <h2>Listado de Articulos</h2>  
+            <a th:href="@{/articulo/nuevo}">Nuevo Articulo</a>         
             <div th:if="${articulos != null and !articulos.empty}">                
                 <table border="1">                    
                     <thead>                        
                         <tr>                            
                             <th>Descripción</th>                            
                             <th>Precio</th>                                                                         
+                            <th>Existencias</th>                                                                         
+                            <th>Activo</th>                                                                         
+                            <th>Modificar</th>                                                                         
+                            <th>Eliminar</th>                                                                         
                         </tr>                    
                     </thead>                    
                     <tbody>                        
                         <tr th:each="item : ${articulos}">                            
                             <td th:text="${item.descripcion}"></td>                                                                               
                             <td th:text="${#numbers.formatDecimal(item.precio, 3, 2)}"></td>                            
-                            <td><a th:href="@{/carrito/agregar/} + ${item.idArticulo}">Agregar</a></td>                                                    
+                            <td th:text="${item.existencias}"></td>                              
+                            <td><input type="checkbox" name="activo" th:checked="${item.activo}" disabled /></td>
+                            <td><a th:href="@{/articulo/modificar/} + ${item.idArticulo}">Modificar</a></td>    
+                            <td><a th:href="@{/articulo/eliminar/} + ${item.idArticulo}">Eliminar</a></td>  
                         </tr>                    
                     </tbody>                
                 </table> 

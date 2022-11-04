@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+    <html>
+        <head>
+            <title>Categorias</title>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link href="/css/menu.css" rel="stylesheet" type="text/css"/>  
+        </head>
+        <body>
+            <header th:replace="layout/plantilla :: header" />   
+            <div class="contenido">
+                <h2>Listado de Categorias</h2>
+                <a th:href="@{/categoria/nuevo}">Nuevo Categoria</a>
+                <div th:if="${categorias !=null and !categorias.empty}">
+                    <table border="1">
+                        <thead>
+                            <tr>
+                                <th>Descripción</th>
+                                <th>Activa</th>
+                                <th>Modificar</th>
+                                <th>Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each='item : ${categorias}'>
+                                <td th:text='${item.descripcion}'></td>
+                                <td><input type="checkbox" name="activo" th:checked="${item.activo}" disabled /></td>
+                                <td><a th:href="@{/categoria/modificar/} + ${item.idCategoria}">Modificar</a></td>    
+                                <td><a th:href="@{/categoria/eliminar/} + ${item.idCategoria}">Eliminar</a></td>    
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div th:if="${categorias == null or categorias.empty}">                
+                La lista de Categorias está vacía
+            </div>   
+            <footer th:replace="layout/plantilla :: footer" /> 
+        </body>
+    </html>

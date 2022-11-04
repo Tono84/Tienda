@@ -18,16 +18,20 @@ import lombok.Data;
 public class Cliente {
     
     private static final long serialVersionUID = 1L;
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idCliente; //Hibernate lo convierte en id_cliente
+    private long idCliente;//hibernate lo convierte en id_cliente
     String nombre;
     String apellidos;
     String correo;
     String telefono;
-
-    public Cliente() {
+    
+    @JoinColumn(name= "id_credito", referencedColumnName = "id_Credito")
+    @ManyToOne
+    private Credito credito;
+    
+        public Cliente() {
     }
 
     public Cliente(String nombre, String apellidos, String correo, String telefono) {
@@ -36,6 +40,17 @@ public class Cliente {
         this.correo = correo;
         this.telefono = telefono;
     }
+
+    public Cliente(long idCliente, String nombre, String apellidos, String correo, String telefono, Credito credito) {
+        this.idCliente = idCliente;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.correo = correo;
+        this.telefono = telefono;
+        this.credito = credito;
+    }
+    
     
     
 }
+
