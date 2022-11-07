@@ -10,11 +10,23 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <header th:fragment="header">
-            <h1>TechShop</h1>
+        <header th:fragment="header" class="header"><!<!-- Etiqueta para ofrecerle al info de que es un encabezado -->
+            <nav class="nav"><!<!-- Etiqueta para señalar que es un menú -->
+                <a th:href="@{/}" class="logo nav-link">TechShop</a>
+                <ul class="nav-menu">
+                    <li class="nav-menu-item">
+                        <a class="nav-menu-link nav-link" th:href="@{/cliente/listado}">Clientes</a>
+                    </li>
+                    <li class="nav-menu-item">
+                        <a class="nav-menu-link nav-link" th:href="@{/categoria/listado}">Categorias</a>
+                    </li>
+                    <li class="nav-menu-item">
+                        <a class="nav-menu-link nav-link" th:href="@{/articulo/listado}">Articulos</a>
+                    </li>
+                </ul>
+            </nav>
         </header>
-        <div>TODO write content</div>
-        <footer th.fragment="footer">
+        <footer th:fragment="footer" class="footer">
             <p>&COPY Derechos Reservados 2022</p>
         </footer>
     </body>
