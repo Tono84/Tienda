@@ -17,7 +17,7 @@
                     <tr>
                         <td><a th:href="@{/cliente/listado}">Regresar </a></td>
                         <td><a th:href="@{/cliente/nuevo}">Nuevo Cliente </a></td>
-                        <td>
+                        <td> 
                             <form th:action="@{/cliente/buscar}" method="get" th:object="${cliente}">
                                 <input type="text" name="apellidos" value="Apellidos" />
                                 <input type="submit" value="Buscar por Apellidos" name="Buscar" />

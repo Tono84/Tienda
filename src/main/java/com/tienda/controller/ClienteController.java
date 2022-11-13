@@ -4,6 +4,7 @@
  */
 package com.tienda.controller;
 
+import java.lang.String;
 import com.tienda.domain.Cliente;
 import com.tienda.service.ClienteService;
 import static java.rmi.server.LogStream.log;
@@ -54,5 +55,12 @@ public class ClienteController {
         clienteService.delete(cliente);
         return "redirect:/cliente/listado";
 
+    }
+
+    @GetMapping("/cliente/buscar")
+    public String buscarCliente(String apellidos, Model model) {
+        var clientes = clienteService.getByApellidos(apellidos);
+        model.addAttribute("clientes",clientes);
+        return "/cliente/buscar";
     }
 }

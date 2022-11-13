@@ -24,7 +24,7 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Autowired
     private ClienteDao clienteDao;
-    
+
     @Autowired
     private CreditoDao creditoDao;
 
@@ -53,6 +53,12 @@ public class ClienteServiceImpl implements ClienteService {
     @Transactional
     public void delete(Cliente cliente) {
         clienteDao.delete(cliente);
+    }
+
+    @Override
+    @Transactional
+    public List<Cliente> getByApellidos(String apellidos) {
+        return clienteDao.findByApellidos(apellidos);
     }
 
 }

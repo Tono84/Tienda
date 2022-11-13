@@ -28,7 +28,7 @@ body{
 .nav {
     display: flex;
     justify-content: space-between;
-    max-widht: 992px;
+    max-width: 992px;
     margin: 0 auto;
 }
 
