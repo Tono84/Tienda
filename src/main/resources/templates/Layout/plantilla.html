@@ -15,19 +15,25 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 <a th:href="@{/}" class="logo nav-link">TechShop</a>
                 <ul class="nav-menu">
                     <li class="nav-menu-item">
-                        <a class="nav-menu-link nav-link" th:href="@{/cliente/listado}">Clientes</a>
+                        <a class="nav-menu-link nav-link" th:href="@{/cliente/listado}" 
+                           th:text="#{plantilla.clientes}">Clientes</a>
                     </li>
                     <li class="nav-menu-item">
-                        <a class="nav-menu-link nav-link" th:href="@{/categoria/listado}">Categorias</a>
+                        <a class="nav-menu-link nav-link" th:href="@{/categoria/listado}" 
+                           th:text="#{plantilla.categorias}">Categorias</a>
                     </li>
                     <li class="nav-menu-item">
-                        <a class="nav-menu-link nav-link" th:href="@{/articulo/listado}">Articulos</a>
+                        <a class="nav-menu-link nav-link" th:href="@{/articulo/listado}" 
+                           th:text="#{plantilla.articulos}">Articulos</a>
                     </li>
                 </ul>
             </nav>
         </header>
         <footer th:fragment="footer" class="footer">
-            <p>&COPY Derechos Reservados 2022</p>
+            <p>&COPY [[#{plantilla.derechos}]]
+                <a  th:href="@{/(lang=es)}">ES</a> |
+                <a  th:href="@{/(lang=en)}">EN</a>
+            </p>
         </footer>
     </body>
 </html>

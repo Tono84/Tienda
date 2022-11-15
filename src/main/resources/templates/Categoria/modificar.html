@@ -13,19 +13,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     <body>
         <header th:replace="layout/plantilla :: header" />   
         <div class="contenido">
-            <h2>Datos de Categoria</h2>
-            <a th:href="@{/categoria/listado}">Regresar</a>
+            <h2 th:text="#{categoria.titulo}">Datos de Categoria</h2>
+            <a th:href="@{/categoria/listado}" th:text="#{accion.regresar}">Regresar</a>
             <br/>
             <br/>
             <form th:action="@{/categoria/guardar}" method="post" th:object="${categoria}">
                 <input type="hidden" name="idCategoria" th:field="*{idCategoria}"/>
-                <label for="descripcion">Descripción: </label>
+                <label for="descripcion" th:text="#{categoria.descripcion}">Descripción: </label>
                 <input type="text" name="descripcion" th:field="*{descripcion}" />            
                 <br>            
-                <label for="activo">Activa: </label>            
+                <label for="activo" th:text="#{categoria.activo}">Activa: </label>            
                 <input type="checkbox" name="activo" th:checked="*{activo}" />            
                 <br>    
-                <input type="submit" name="Guardar" value="Guardar" />        
+                <button type="submit" name="Guardar" th:text="#{accion.guardar}"/>        
             </form>   
         </div>   
         <footer th:replace="layout/plantilla :: footer" /> 

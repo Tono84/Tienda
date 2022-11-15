@@ -12,28 +12,29 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     <body>        
         <header th:replace="layout/plantilla :: header" />        
         <div class="contenido">            
-            <h2>Nuestros Articulos</h2>            
+            <h2 th:text="#{index.titulo}">Nuestros Articulos</h2>            
             <a th:href="@{/articulo/nuevo}">Nuevo Articulo</a>            
             <div th:if="${articulos != null and !articulos.empty}">                
                 <table border="1">                    
                     <thead>                        
                         <tr>                            
-                            <th>Descripción</th>                            
-                            <th>Precio</th>                                                                         
+                            <th th:text="#{articulo.descripcion}">Descripción</th>                            
+                            <th th:text="#{articulo.precio}">Precio</th>   
+                            <th th:text="#{articulo.comprar}">Comprar</th>
                         </tr>                    
                     </thead>                    
                     <tbody>                        
                         <tr th:each="item : ${articulos}">                            
                             <td th:text="${item.descripcion}"></td>                                                                               
                             <td th:text="${#numbers.formatDecimal(item.precio, 3, 2)}"></td>                            
-                            <td><a th:href="@{/carrito/agregar/} + ${item.idArticulo}">Agregar</a></td>                                                    
+                            <td><a th:href="@{/carrito/agregar/} + ${item.idArticulo}" th:text="#{accion.agregar}">Agregar</a></td>                                                    
                         </tr>                    
                     </tbody>                
                 </table> 
             </div>  
         </div>            
-        <div th:if="${articulos == null or articulos.empty}">                
-            La lista de articulos está vacía
+        <div th:if="${articulos == null or articulos.empty}" th:text="#{articulo.no_mostrar}">                
+            No tenemos lista de articulos que mostrar...
         </div>   
         <footer th:replace="layout/plantilla :: footer" />    
     </body>
