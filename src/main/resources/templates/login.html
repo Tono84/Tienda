@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http//wwww.w3.org/1999/xhtml"> 
+<html>
+    <head>
+        <title>TechShop</title>
+        <meta charset="UTF-8">
+        <style>
+            .contenido {
+                text-align: center;
+                border-radius: 20px;
+                top: 50%;
+                left: 50%;
+                margin-left: -200px;
+                margin-top: -125px;
+                background-color: grey;
+                overflow: auto;
+                position:fixed;
+                width: 400px;
+                height: 250px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="contenido">
+            <h2 th:text="#{login.login}">
+                Autenticar
+            </h2>
+            <form method="POST" th:action="@{/login}">
+                <label for="username" th:text="#{login.username}">Usuario</label><br><br>
+                <input type="text" name="username" id="username"><br?><br>
+                <label for="password" th:text="#{login.password}">Contraseña</label><br><br>
+                <input type="password" name="password" id="password"><br?><br>
+                <button type="submit" value="#{login.login}">Autenticar</button>
+            </form> 
+        </div>
+    </body>
+</html>
