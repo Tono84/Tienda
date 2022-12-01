@@ -1,43 +1,13 @@
-<!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
-<html xmlns:th="http://www.thymeleaf.org"> 
-    <head>
-        <title>Clientes</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>  
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://wwww.thymeleaf.org" 
+      xmlns:sec="http://thymeleaft.org/extras/spring-security">
+    <head th:replace="layout/plantilla :: head">
+        <title>TechShop</title>
     </head>
     <body>
-        <header th:replace="layout/plantilla :: header" />   
-        <div class="contenido">
-            <h2 th:text="#{cliente.datos}">Datos del Cliente</h2>
-            <a th:href="@{/cliente/listado}" th:text="#{accion.regresar}">Regresar</a>
-            <br/>
-            <br/>
-            <form th:action="@{/cliente/guardar}" method="post" th:object="${cliente}">
-                <input type="hidden" name="idCliente" th:field="*{idCliente}"/>
-                <input type="hidden" name="idCredito" th:field="*{credito.idCredito}"/>
-                <label for="nombre" th:text="#{cliente.nombre}">Nombre: </label>
-                <input type="text" name="nombre" th:field="*{nombre}" />            
-                <br>            
-                <label for="apellidos" th:text="#{cliente.apellidos}">Apellidos: </label>            
-                <input type="text" name="apellidos" th:field="*{apellidos}" />            
-                <br>            
-                <label for="correo" th:text="#{cliente.correo}">Correo: </label>            
-                <input type="email" name="correo" th:field="*{correo}" />            
-                <br>            
-                <label for="tel" th:text="#{cliente.telefono}">Teléfono: </label>            
-                <input type="tel" name="tel" th:field="*{telefono}" />            
-                <br>    
-                <label for="tel" th:text="#{cliente.limite}">Limite </label>            
-                <input type="number" name="limite" th:field="*{credito.limite}" />            
-                <br> 
-                <button type="submit" name="Guardar" th:text="#{accion.guardar}" />        
-            </form>   
-        </div>   
-        <footer th:replace="layout/plantilla :: footer" /> 
+        <header th:replace="layout/plantilla :: header" />
+        <section th:replace="cliente/fragmentosCliente :: editarCliente"/> 
+        <footer th:replace="layout/plantilla :: footer" />
     </body>
 </html>
