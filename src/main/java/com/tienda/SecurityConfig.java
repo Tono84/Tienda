@@ -50,8 +50,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/articulo/listado", "/cliente/listado",
                         "/categoria/listado")
                 .hasAnyRole("ADMIN", "VENDEDOR")
-                .antMatchers("/")
-                .hasAnyRole("ADMIN", "VENDEDOR", "USER")
+                .antMatchers("/","/carrito/**")
+                .permitAll()
+                .antMatchers("/facturar/carrito")
+                .authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")

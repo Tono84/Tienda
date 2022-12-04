@@ -4,6 +4,7 @@
  */
 package com.tienda.domain;
 
+import static com.fasterxml.jackson.databind.util.ClassUtil.name;
 import javax.persistence.*;
 import lombok.Data;
 
@@ -28,6 +29,8 @@ public class Articulo {
     private double precio;
     private int existencias;
     private boolean activo;
+    @Column(name="ruta_imagen")
+    private String rutaImagen;
 
     public Articulo() {
     }

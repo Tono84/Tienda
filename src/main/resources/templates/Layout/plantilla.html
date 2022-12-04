@@ -1,12 +1,8 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
 <html xmlns:th="http://www.thymelead.org"
       xmlns:sec="http://thymeleaf.org/extras/spring-security">
     <head th:fragment="head">
-        <title>Plantilla</title>
+        <title>TechShop</title>
         <meta charset="UTF-8"/>
         <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
         <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
@@ -49,10 +45,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                     <span sec:authentication="name">Usuario</span>
                                 </a>
                             </li>
+
                             <li class="nav-item">
                                 <form method="POST" th:action="@{/logout}">
                                     <a href="#" onclick="this.parentNode.submit();" class="nav-link">
                                         <i class="fas fa-user-times"></i> [[#{plantilla.logout}]]
+                                    </a>
+                                </form>
+                            </li>
+                        </ul>
+                        <ul sec:authorize="!isAuthenticated()" class="navbar-nav ml-auto">
+                            <li class="nav-item mr-3">
+                                <form method="POST" th:action="@{/login}">
+                                    <a href="#" onclick="this.parentNode.submit();" class="nav-link">
+                                        <i class="fas fa-user-times"></i> [[#{login.login}]]
                                     </a>
                                 </form>
                             </li>
