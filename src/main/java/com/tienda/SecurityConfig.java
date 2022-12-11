@@ -4,11 +4,14 @@
  */
 package com.tienda;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
  *
@@ -18,22 +21,13 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 // método para hacer autenticación de usuario    
-
+    
+    @Autowired
+    private UserDetailsService userDetailsService;
+    
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-
-        auth.inMemoryAuthentication()
-                .withUser("admin")
-                .password("{noop}123")
-                .roles("ADMIN", "VENDEDOR", "USER")
-                .and()
-                .withUser("vendedor")
-                .password("{noop}123")
-                .roles("VENDEDOR", "USER")
-                .and()
-                .withUser("user")
-                .password("{noop}123")
-                .roles("USER");
+    protected void configure(AuthenticationManagerBuilder builder) throws Exception {
+        builder.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
     }
 
     //El siguiente método funciona para realizar la autorización de accesos    
